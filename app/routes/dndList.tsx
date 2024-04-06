@@ -5,7 +5,6 @@ import {combine} from "@atlaskit/pragmatic-drag-and-drop/combine";
 import clsx from "clsx";
 import {attachClosestEdge, extractClosestEdge} from "@atlaskit/pragmatic-drag-and-drop-hitbox/closest-edge";
 import {Edge} from "@atlaskit/pragmatic-drag-and-drop-hitbox/types";
-import {DropIndicator} from "@atlaskit/pragmatic-drag-and-drop-react-drop-indicator/box";
 import {motion} from "framer-motion";
 import {useDndListStore} from "~/store/dndListStore";
 
@@ -150,7 +149,7 @@ const ListItem = memo(function ListItem({item, index}: { item: { id: string, lab
              )
              }>
             <span>{item.label}</span>
-            {closestEdge && <DropIndicator edge={closestEdge} gap="1px"/>}
+            {closestEdge && <div className={clsx("absolute w-full left-0 h-1 bg-blue-500",closestEdge === "top" ? "top-0" : "bottom-0")}/>}
         </motion.div>
     );
 })
